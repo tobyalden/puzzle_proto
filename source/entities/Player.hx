@@ -9,25 +9,20 @@ import haxepunk.Tween;
 import haxepunk.tweens.misc.*;
 import scenes.*;
 
-class Player extends Entity
+class Cursor extends Entity
 {
-    public static inline var SPEED = 100;
-
     private var sprite:Spritemap;
-    private var velocity:Vector2;
 
     public function new(x:Float, y:Float) {
         super(x, y);
-        mask = new Hitbox(10, 10);
-        sprite = new Spritemap("graphics/player.png", 10, 10);
+        layer = -20;
+        sprite = new Spritemap("graphics/player.png", 12, 12);
         sprite.add("idle", [0]);
         sprite.play("idle");
         graphic = sprite;
-        velocity = new Vector2();
     }
 
     override public function update() {
-        var heading = new Vector2();
         if(Input.check("left")) {
             heading.x = -1;
         }
